@@ -539,6 +539,80 @@ class linkedlist:
                 n = n.ref
             n.ref = None
 
+            
+    def delete_given_node(self, x):
+        if self.head is None:
+            print('Linked List is empty! Cannot remove element.')
+            return
+        
+        # Case: Head node contains the value to be deleted
+        if self.head.data == x:
+            self.head = self.head.ref
+            print(f'Element {x} deleted successfully.')
+            return
+        
+        n = self.head
+        while n.ref:
+            if n.ref.data == x:
+                n.ref = n.ref.ref  # Skipping the node containing x
+                print(f'Element {x} deleted successfully.')
+                return
+            n = n.ref  # Move to the next node
+        
+        # If we reach here, the element was not found
+        print(f'Element {x} not found in the Linked List.')
+
+    def delete_before_given_node(self,x):
+        if self.head==None:
+            print('Linked List is empty! Cannot remove element.')
+            return
+        if self.head.ref.data==x:
+            self.head=self.head.ref
+            print(f'Element before {x} deleted successfully.')
+            return
+        n=self.head
+        while n.ref:
+            if n.ref.ref.data==x:
+                n.ref=n.ref.ref
+                print(f'Element before {x} deleted successfully.')
+                return
+            n=n.ref
+            print(f'Element before {x} not found in the Linked List.')
+    
+    def delete_after_given_node(self, x):
+        if self.head is None:
+            print('Linked List is empty! Cannot remove element.')
+            return
+        
+        n = self.head
+        while n and n.ref:
+            if n.data == x:
+                if n.ref:  # Ensure the next node exists
+                    n.ref = n.ref.ref
+                    print(f'Element after {x} deleted successfully.')
+                    return
+                else:
+                    print('No node after the given node.')
+                    return
+            n = n.ref
+        
+        print(f'Element {x} not found in the Linked List.')
+    def delete_after_given_node(self, x):
+        if self.head is None:
+            print('Linked List is empty! Cannot remove element.')
+            return
+
+        n = self.head
+        # First, check if the next node is None before entering the loop
+        while n.ref and n.ref.ref:
+            if n.data == x:
+                n.ref = n.ref.ref  # Delete the node after the given node
+                print(f'Element after {x} deleted successfully.')
+                return
+            n = n.ref
+
+        print(f'Element {x} not found in the Linked List or no node after {x}.')
+
 
 lli= linkedlist()
 lli.add_begin(12)
