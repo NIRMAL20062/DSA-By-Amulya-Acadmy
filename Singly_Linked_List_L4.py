@@ -106,6 +106,7 @@ class linkedlist:
         new_node = Node(data)
         new_node.ref = self.head
         self.head = new_node
+    
     def add_end(self, data):
         new_node = Node(data)
         if self.head is None:
