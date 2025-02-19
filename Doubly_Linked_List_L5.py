@@ -33,7 +33,7 @@ class DoublyLinkedList:
             while n is not None:
                 print(n.data,'-->',end=' ')
                 n=n.pref   # to print from last node to first node
-    
+
     # Doubly linked list operations
 
     # 1.When linked list is empty
@@ -81,9 +81,9 @@ class DoublyLinkedList:
                 print('Given Node is not present in DDL ')
             else:
                 new_node=Node(data)
-                new_node.pref=n.nref
+                new_node.nref=n.nref
                 new_node.pref=n
-                if n.nref is not None:
+                if n.nref is not None:   # checking if it is not the last node , as if it is last node then three condition is enough 
                     n.nref.pref=new_node
                 n.nref=new_node
 
@@ -159,6 +159,22 @@ class DoublyLinkedList:
         if self.head.data==x:
             self.head=self.head.nref
             self.head.pref=None
+            return
+        n=self.head
+        while n.nref:
+            if n.data==x:
+                break
+            n=n.nref
+        if n.nref!=None:
+            n.nref.pref=n.pref
+            n.pref.nref=n.nref
+        else:
+            if n.data==x:
+                n.pref.nref=None
+            else:
+                print('X is not present in Dll')
+                return
+
             
 
 
