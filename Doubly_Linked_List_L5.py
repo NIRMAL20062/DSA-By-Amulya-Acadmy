@@ -1,12 +1,13 @@
 # doubly linked list
-
+# while n is not None:	Last node	Printing all nodes, traversing fully
+# while n.nref is not None:	Second-last node	Finding the last node, inserting at end
 
 # operation
 class Node:
-    def __init__(self,data):
+    def __init__(self, data):
         self.data = data
-        self.nref = None   #pref is previous reference
-        self.pref = None   # nref is next reference
+        self.nref = None   # nref is next reference
+        self.pref = None   # pref is previous reference
 
 class DoublyLinkedList:
 
@@ -21,11 +22,12 @@ class DoublyLinkedList:
             while n is not None:
                 print(n.data,'-->',end=' ')
                 n=n.nref
+            print()
 
     def print_LL_reverse(self):
-        print()
         if self.head is None:
             print('Linked list is empty')
+            return
         else:
             n=self.head
             while n.nref is not None:   #to goto last node
@@ -33,7 +35,7 @@ class DoublyLinkedList:
             while n is not None:
                 print(n.data,'-->',end=' ')
                 n=n.pref   # to print from last node to first node
-
+        print()
     # Doubly linked list operations
 
     # 1.When linked list is empty
@@ -43,12 +45,14 @@ class DoublyLinkedList:
             self.head=new_node
         else:
             print('Linked List is not empty !')
+            return
 
     # 2.inserting at beginning LL is not empty and LL is empty.
     def add_begin(self,data):
         new_node=Node(data)
         if self.head is None:
            self.head=new_node
+           return
         else:
             new_node.nref=self.head
             self.head.pref=new_node
@@ -59,9 +63,10 @@ class DoublyLinkedList:
         new_node=Node(data)
         if self.head is None:
             self.head=new_node
+            return
         else:
             n=self.head
-            while n.nref is not None:
+            while n.nref is not None:  # Traverse to the last node
                 n=n.nref
             n.nref=new_node
             new_node.pref=n
@@ -70,11 +75,12 @@ class DoublyLinkedList:
     def add_after(self,data,x):
         if self.head is None:
             print('LL is empty !')
+            return
         else:
             n=self.head
 # Note: here the while loop come out of loop at two conditions if get satisfied 1.when no x is matched 2.when x is matched
             while n is not None:
-                if x==n.data:
+                if x==n.data:  # Stop if the matching node is found
                     break
                 n=n.nref
             if n is None:
@@ -83,7 +89,7 @@ class DoublyLinkedList:
                 new_node=Node(data)
                 new_node.nref=n.nref
                 new_node.pref=n
-                if n.nref is not None:   # checking if it is not the last node , as if it is last node then three condition is enough 
+                if n.nref is not None: # If not the last node, update the next node's `pref`  # checking if it is not the last node , as if it is last node then three condition is enough 
                     n.nref.pref=new_node
                 n.nref=new_node
 
@@ -130,18 +136,23 @@ class DoublyLinkedList:
         if self.head is None:
             print('LL is empty !')
             return
-            # check if only one node is there
+        
+        # Check if there is only one node
         if self.head.nref is None:
             self.head=None
-            return 'Dll is empty after deleting last node'
-            # rest cases when more than one node is there
+            return
+        
+        # rest cases when more than one node is there
+        # Traverse to the last node
         n=self.head
         while n.nref is not None:
             n=n.nref
+    
+        # Update second-last node's next reference to None
         n.pref.nref=None
     
-    # delete by value
 
+# Delete by value
     def delete_by_value(self,x):
         # check if ll is empty
         if self.head is None:
