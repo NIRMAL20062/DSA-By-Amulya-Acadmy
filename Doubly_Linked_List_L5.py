@@ -154,7 +154,7 @@ class DoublyLinkedList:
 
 # Delete by value
     def delete_by_value(self,x):
-        # check if ll is empty
+        # check if Dll is empty
         if self.head is None:
             print('DLL is empty can\'t delete it')
             return
@@ -165,12 +165,13 @@ class DoublyLinkedList:
                 self.head=None
             else:
                 print('X is not present in Dll')
-                return
+            return
         #  deleting first node
         if self.head.data==x:
             self.head=self.head.nref
             self.head.pref=None
             return
+        #  Traverse the DLL to find the node, and delete it if found 
         n=self.head
         while n.nref:
             if n.data==x:

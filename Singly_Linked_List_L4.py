@@ -5,6 +5,76 @@
 
 
 
+
+
+
+class node:
+    def __init__(self,data):
+        self.data=data
+        self.ref=None
+class LL:
+    def __init__(self):
+        self.head=None
+    
+    def display(self):
+        if self.head==None:
+            print('Linked List is empty ')
+            return
+        n=self.head
+        while n:  # The while loop should iterate over n instead of checking n.ref. Otherwise, it will skip the last node.
+            print(f'{n.data}-->>',end=' '
+                  )
+        print('None')
+
+    def insert_begin(self,data):
+        if self.head==None:
+            print('Linked List is empty so the new node is added as head node')
+            self.head = new_node
+            return
+        new_node=node(data)
+        new_node.ref=self.head
+        self.head=new_node
+    
+    def insert_end(self,data):
+        new_node=node(data)
+        if self.head==None:
+            self.head=new_node
+            return
+        n=self.head
+        while n.ref:
+            n=n.ref
+        n.ref=new_node
+    
+    def insert_after_node(self,data,x):
+        if self.head==None:
+            print('Can not append to Empty Node ')
+        n=self.head
+        while n:
+            if n.data==x:
+                break
+            n=n.ref
+        if n!=None:
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 1.Traversal
 """ class Node:
     def __init__(self, data):
@@ -38,6 +108,7 @@ ll.print_LL()      # linked list is empth! """
 class linkedlist:
     def __init__(self):
         self.head=None
+
     def print_LL(self):
         if self.head is None:
             print('Linked list is empty')
@@ -46,6 +117,7 @@ class linkedlist:
             while n is not None:
                 print(n.data)
                 n=n.ref
+
     def add_begin(self,data):
         new_node = Node(data)
         new_node.ref = self.head
@@ -597,6 +669,7 @@ class linkedlist:
             n = n.ref
         
         print(f'Element {x} not found in the Linked List.')
+        
     def delete_after_given_node(self, x):
         if self.head is None:
             print('Linked List is empty! Cannot remove element.')
