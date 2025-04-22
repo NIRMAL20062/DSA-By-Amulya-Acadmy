@@ -9,9 +9,9 @@ class Node:
 # Doubly_LL class to represent the doubly linked list
 class Doubly_LL:
     def __init__(self):
-        self.head = None  # Initialize the head of the list as None
-
-    # Method to display the doubly linked list
+        self.head = None  # Initialize the head of the list as None 
+ 
+    # Method to display the doubly linked list 
     def Display(self):
         if self.head is None:  # If the list is empty
             print('Doubly Linked List Is Empty')
@@ -76,7 +76,7 @@ class Doubly_LL:
                 self.Display()  # Display the updated list
                 return
             n = n.nref  # Move to the next node
-        print(f"Node with data {x} not found in the Linked List.")  # If `x` is not found
+        print(f"Node with data {x} not found in the Linked List.")  # If `x` is not found 
 
     # Method to insert a node before a given node with value `x`
     def insert_before(self, data, x):
@@ -137,14 +137,14 @@ class Doubly_LL:
             if self.head:  # If the new head exists
                 self.head.pref = None  # Set the new head's previous to None
             return
-        n = self.head
+        n = self.head 
         while n and n.nref:  # Traverse the list to find the node with value `x`
             if n.nref.data == x:  # If the next node has value `x`
                 n.nref = n.nref.nref  # Skip the node with value `x`
                 if n.nref:  # If there is a node after the deleted node
                     n.nref.pref = n  # Update the next node's previous to `n`
                 return
-            n = n.nref  # Move to the next node
+            n = n.nref  # Move to the next node 
         print(f"Node with value {x} not found in the linked list.")  # If `x` is not found
 
     # Method to delete the node after a given node with value `x`
@@ -170,7 +170,7 @@ class Doubly_LL:
         if self.head.data == x:  # If `x` is the head node
             print("No node before the head node to delete.")
             return
-        n = self.head
+        n = self.head 
         while n and n.nref:  # Traverse the list to find the node with value `x`
             if n.nref.data == x:  # If the next node has value `x`
                 n.nref = n.nref.nref  # Skip the node before `x`

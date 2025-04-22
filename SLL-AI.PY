@@ -2,7 +2,7 @@
 class Node:
     def __init__(self, data):
         self.data = data  # Data stored in the node
-        self.ref = None   # Reference to the next node
+        self.ref = None   # Reference to the next node 
 
 
 # Linkedlist class to represent the linked list
@@ -11,7 +11,7 @@ class Linkedlist:
         self.head = None  # Initialize the head of the list as None
 
     def length(self):
-        count = 0
+        count = 0 
         n = self.head
         while n:
             count += 1
@@ -36,7 +36,7 @@ class Linkedlist:
             self.head = new_node  # Set the new node as the head
         else:
             new_node.ref = self.head  # New node's next points to the current head
-            self.head = new_node  # Update the head to the new node
+            self.head = new_node  # Update the head to the new node 
 
     # Method to insert a node at the end of the list
     def insert_end(self, data):
@@ -100,7 +100,7 @@ class Linkedlist:
         else:
             n = self.head
             while n.ref.ref is not None:  # Traverse to the second-to-last node
-                n = n.ref
+                n = n.ref 
             n.ref = None  # Remove the last node
 
     # Method to delete a node with a given value `x`
@@ -119,7 +119,7 @@ class Linkedlist:
                 print(f'Element {x} deleted successfully.')
                 return
             n = n.ref  # Move to the next node
-        print(f'Element {x} not found in the Linked List.')  # If `x` is not found
+        print(f'Element {x} not found in the Linked List.')  # If `x` is not found 
 
     # Method to delete the node before a given node with value `x`
     def delete_before_given_node(self, x):
@@ -132,7 +132,7 @@ class Linkedlist:
         if self.head.ref.data == x:  # If the second node is `x`
             self.head = self.head.ref  # Delete the head node
             print(f"Element before {x} deleted successfully.")
-            return
+            return 
         n = self.head
         while n.ref.ref is not None:  # Traverse the list to find the node before `x`
             if n.ref.ref.data == x:  # If the node after the next node has value `x`
@@ -157,7 +157,7 @@ class Linkedlist:
                 print(f"Element after {x} deleted successfully.")
                 return
             n = n.ref  # Move to the next node
-        print(f"Element {x} not found in the Linked List.")  # If `x` is not found
+        print(f"Element {x} not found in the Linked List.")  # If `x` is not found 
 
 
 # Create a linked list
