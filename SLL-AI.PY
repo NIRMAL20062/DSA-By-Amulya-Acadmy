@@ -138,7 +138,7 @@ class Linkedlist:
             if n.ref.ref.data == x:  # If the node after the next node has value `x`
                 n.ref = n.ref.ref  # Skip the node before `x`
                 print(f"Element before {x} deleted successfully.")
-                return
+                return 
             n = n.ref  # Move to the next node
         print(f"Element before {x} not found in the Linked List.")  # If `x` is not found
 
